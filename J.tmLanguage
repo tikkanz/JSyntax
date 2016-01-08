@@ -20,13 +20,6 @@
             <string>('[^']*')</string>
         </dict>
 
-        <dict>
-            <key>name</key>
-            <string>constant.numeric.j</string>
-
-            <key>match</key>
-            <string>(_?\d*\.?\d+)</string>
-        </dict>
 
         <dict>
             <key>name</key>
@@ -34,6 +27,13 @@
 
             <key>match</key>
             <string>(?:^|[ )])(NB\..*$)</string>
+        </dict>
+        <dict>
+            <key>name</key>
+            <string>constant.numeric.j</string>
+
+            <key>match</key>
+            <string>(?&lt;![_a-zA-Z])([_0-9][_0-9a-zA-Z]*\.?[0-9a-zA-Z]*)(?![\.\:])</string>
         </dict>
 
         <dict>
@@ -65,7 +65,7 @@
             <string>noun.j</string>
 
             <key>match</key>
-            <string>(?:_(?=[^\d:]))|(?:a[.:])</string>
+            <string>(?:(_\.|a\.|a:)(?![\.\:]))</string>
         </dict>
 
         <dict>
@@ -73,7 +73,7 @@
             <string>conjunction.j</string>
 
             <key>match</key>
-            <string>(?:\^\:)|(?:[.:`@][.:]?)|(?:;\.)|(?:![.:])|(?:["](?![.:]))|(?:\&\.?\:?)|(?:[dHT]\.)|(?:D[.:])|(?:[LS]\:)</string>
+            <string>((?:[dDHT]\.)|(?:[DLS]:)|(&amp;\.:)|([\;\!\@&amp;]\.)|([\^\!\`\@&amp;]:)|([\"\`\@&amp;])|(\s[\.\:][\.\:])|(\s[\.\:]))(?![\.\:])</string>
         </dict>
 
         <dict>
@@ -81,7 +81,7 @@
             <string>adverb.j</string>
 
             <key>match</key>
-            <string>(?:[~}](?![.:]))|(?:[/\\]\.?)|(?:[bfM]\.)|(?:t[.:])</string>
+            <string>(([\/\\]\.)|(?:[bfMt]\.)|(?:t:)|([\~\/\\\}]))(?![\.\:])</string>
         </dict>
 
         <dict>
@@ -89,7 +89,7 @@
             <string>verb.j</string>
 
             <key>match</key>
-            <string>(?:[=!](?![.:]))|(?:[&lt;&gt;+*%$|,#{-][.:]?)|(?:_\:)|(?:\^\.?)|(?:\^\!\.)|(?:[~}"ip][.:])|(?:[;\[]\:?)|(?:[/\\]\:)|\]|(?:\{\:\:)|(?:\?\.?)|(?:[AeEIjLr]\.)|(?:p\.\.)|(?:[qsux0]\:)|(?:_?[1-9]\s?\:)</string>
+            <string>((?:_?[0-9]\:)|(?:p\.\.)|(?:[AcCeEiIjLopr]\.)|(?:[ipqsux]:)|({::)|([&lt;&gt;\+\*\-\%\^\$\~\|\,\#\{\}&quot;\?]\.)|([&lt;&gt;\_\+\*\-\%\$\~\|\,\;\#\/\\\[\{\}&quot;]:)|([&lt;&gt;\=\+\*\-\%\^\$\|\,\;\#\!\[\]\{\?]))(?![\.\:])</string>
         </dict>
     </array>
 
