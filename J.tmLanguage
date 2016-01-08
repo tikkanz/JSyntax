@@ -57,7 +57,7 @@
             <string>keyword.j</string>
 
             <key>match</key>
-            <string>(?:^|(?&lt;=[) ]))((?:while\.)|(?:whilst\.)|(?:if\.)|(?:elseif\.)|(?:else\.)|(?:do\.)|(?:end\.))</string>
+            <string>(?&lt;![_a-zA-Z0-9])((?:while\.)|(?:whilst\.)|(?:if\.)|(?:elseif\.)|(?:else\.)|(?:do\.)|(?:end\.))</string>
         </dict>
 
         <dict>
@@ -65,7 +65,7 @@
             <string>noun.j</string>
 
             <key>match</key>
-            <string>(?:(_\.|a\.|a:)(?![\.\:]))</string>
+            <string>((?&lt;![_a-zA-Z0-9])(_\.|a\.|a:)(?![\.\:]))</string>
         </dict>
 
         <dict>
@@ -73,7 +73,7 @@
             <string>conjunction.j</string>
 
             <key>match</key>
-            <string>((?:[dDHT]\.)|(?:[DLS]:)|(&amp;\.:)|([\;\!\@&amp;]\.)|([\^\!\`\@&amp;]:)|([\"\`\@&amp;])|(\s[\.\:][\.\:])|(\s[\.\:]))(?![\.\:])</string>
+            <string>((?&lt;![_a-zA-Z0-9])(?:[dDHT]\.)|(?&lt;![_a-zA-Z0-9])(?:[DLS]:)|(&amp;\.:)|([\;\!\@&amp;]\.)|([\^\!\`\@&amp;]:)|([\"\`\@&amp;])|(\s[\.\:][\.\:])|(\s[\.\:]))(?![\.\:])</string>
         </dict>
 
         <dict>
@@ -81,7 +81,7 @@
             <string>adverb.j</string>
 
             <key>match</key>
-            <string>(([\/\\]\.)|(?:[bfMt]\.)|(?:t:)|([\~\/\\\}]))(?![\.\:])</string>
+            <string>(([\/\\]\.)|(?&lt;![_a-zA-Z0-9])(?:[bfMt]\.)|(?&lt;![_a-zA-Z0-9])(?:t:)|([\~\/\\\}]))(?![\.\:])</string>
         </dict>
 
         <dict>
@@ -89,7 +89,7 @@
             <string>verb.j</string>
 
             <key>match</key>
-            <string>((?:_?[0-9]\:)|(?:p\.\.)|(?:[AcCeEiIjLopr]\.)|(?:[ipqsux]:)|({::)|([&lt;&gt;\+\*\-\%\^\$\~\|\,\#\{\}&quot;\?]\.)|([&lt;&gt;\_\+\*\-\%\$\~\|\,\;\#\/\\\[\{\}&quot;]:)|([&lt;&gt;\=\+\*\-\%\^\$\|\,\;\#\!\[\]\{\?]))(?![\.\:])</string>
+            <string>((?:_?[0-9]\:)|(?&lt;![_a-zA-Z0-9])(?:p\.\.)|(?&lt;![_a-zA-Z0-9])(?:[AcCeEiIjLopr]\.)|(?&lt;![_a-zA-Z0-9])(?:[ipqsux]:)|({::)|([&lt;&gt;\+\*\-\%\^\$\~\|\,\#\{\}&quot;\?]\.)|([&lt;&gt;\_\+\*\-\%\$\~\|\,\;\#\/\\\[\{\}&quot;]:)|([&lt;&gt;\=\+\*\-\%\^\$\|\,\;\#\!\[\]\{\?]))(?![\.\:])</string>
         </dict>
     </array>
 
