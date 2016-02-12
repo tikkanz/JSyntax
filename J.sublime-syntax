@@ -1,0 +1,110 @@
+%YAML 1.2
+---
+name: J
+file_extensions: [ijs, ijt]
+scope: source.j
+
+variables:
+  validname: '[A-Za-z][A-Za-z_0-9]*'
+  closeexpdef: '^\s*\)\s*$'
+
+contexts:
+  main:
+    - include: comments
+    - include: strings
+    - include: openquote
+    - match: \b(([1-4]|13)\s+:\s*0)|((adverb|conjunction|verb|monad|dyad)\s+define)\b
+      push: expdef
+    - match: '\b(0\s+:\s*0|noun\s+define)\b.*$'
+      push: noundef
+    - match: ^\s*\bNote\b(?!\s*\=[:.])\s*[\'\d].*$
+      push: notes
+    - include: note
+    - include: numbers
+    - include: nouns
+    - include: verbs
+    - include: adverbs
+    - include: conjunctions
+    - include: globals
+    - include: locals
+
+  comments:
+    - match: \bNB\..*$
+      scope: comment.j
+
+  strings:
+    - match: \'.*\'
+      scope: string.quoted.j
+
+  openquote:
+    - match: \'[^\']*$
+      scope: invalid.illegal.openquote.j
+
+  globals:
+    - match: "=:"
+      scope: global
+
+  locals:
+    - match: "=."
+      scope: local
+
+  numbers:
+    - match: '\b[_0-9][_0-9\.a-zA-Z]*\b(?![.:])'
+      scope: constant.numeric
+
+  nouns:
+    - match: '\b(_\.|a\.|a:)(?![.:])'
+      scope: noun.j
+
+  verbs:
+    - match: '((_?[1-9]:)|(\b0:)|(\bp\.\.)|(\b[AcCeEiIjLopr]\.)|(\b[ipqsux]:)|({::)|([<>+*\-%^$~|,#\[{}"?]\.)|([<>_+*\-%$~|,;#/\\\[{}"]:)|([<>=+*\-%^$|,;#!\[\]{?]))(?![.:])'
+      scope: identifier.verb.j
+
+  conjunctions:
+    - match: '((\b[dDHT]\.)|(\b[DLS]:)|(&\.:)|([;!@&]\.)|([\^!`@&]:)|(["`@&])|(\s[.:][.:])|(\s[.:]))(?![.:])'
+      scope: identifier.conjunction.j
+
+  adverbs:
+    - match: '(([/\\]\.)|(\b[bfMt]\.)|(\b[bfMt]\.)|(\b[bfMt]\.)|(\bt:)|([~/\\}]))(?![.:])'
+      scope: identifier.adverb.j
+
+  controls:
+    - match: \b(assert|break|continue|return|do|if|else|elseif|end)\.(?![.:])
+      scope: keyword.control.j
+    - match: \b(for|select|case|fcase|throw|try|catch|catchd|catcht)\.(?![.:])
+      scope: keyword.control.j
+    - match: \b(while|whilst|for_{{validname}}|goto_{{validname}}|label_{{validname}})\.(?![.:])
+      scope: keyword.control.j
+
+  expargs:
+    - match: \b[nmuvxy](?![\w.:])
+      scope: exparg
+
+  expdef:
+    - meta_scope: definition.expdef.j
+    - include: comments
+    - include: strings
+    - include: openquote
+    - include: numbers
+    - include: nouns
+    - include: verbs
+    - include: adverbs
+    - include: conjunctions
+    - include: controls
+    - include: expargs
+    - match: '{{closeexpdef}}'
+      pop: true
+
+  noundef:
+    - meta_scope: definition.noundef.j
+    - match: '{{closeexpdef}}'
+      pop: true
+
+  notes:
+    - meta_scope: definition.note.j
+    - match: '{{closeexpdef}}'
+      pop: true
+
+  note:
+    - match: \bNote\b(?!\s*\=[:.])\s*['\d].*$
+      scope: comment.j
