@@ -13,9 +13,9 @@ contexts:
     - include: comments
     - include: strings
     - include: openquote
-    - match: \b(([1-4]|13)\s+:\s*0)|((adverb|conjunction|verb|monad|dyad)\s+define)\b
+    - match: \b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b
       push: expdef
-    - match: '\b(0\s+:\s*0|noun\s+define)\b.*$'
+    - match: '\b(0|noun)\s+(:\s*0|define)\b'
       push: noundef
     - match: ^\s*\bNote\b(?!\s*\=[:.])\s*[\'\d].*$
       push: notes
@@ -57,23 +57,39 @@ contexts:
       scope: noun.j
 
   verbs:
-    - match: '((_?[1-9]:)|(\b0:)|(\bp\.\.)|(\b[AcCeEiIjLopr]\.)|(\b[ipqsux]:)|({::)|([<>+*\-%^$~|,#\[{}"?]\.)|([<>_+*\-%$~|,;#/\\\[{}"]:)|([<>=+*\-%^$|,;#!\[\]{?]))(?![.:])'
+    - match: '((_?[1-9]:)|(\b0:)|({::))(?![.:])'
+      scope: identifier.verb.j
+    - match: '\b(([AcCeEiIjLopr]\.)|([ipqsux]:)|(p\.\.))(?![.:])'
+      scope: identifier.verb.j
+    - match: '([<>+*\-%$|,#{}^~"?]\.)(?![.:])'
+      scope: identifier.verb.j
+    - match: '([<>+*\-%$|,#{};~"_/\\\[]:)(?![.:])'
+      scope: identifier.verb.j
+    - match: '([<>+*\-%$|,#{!;^=?\[\]])(?![.:])'
       scope: identifier.verb.j
 
-  conjunctions:
-    - match: '((\b[dDHT]\.)|(\b[DLS]:)|(&\.:)|([;!@&]\.)|([\^!`@&]:)|(["`@&])|(\s[.:][.:])|(\s[.:]))(?![.:])'
-      scope: identifier.conjunction.j
-
   adverbs:
-    - match: '(([/\\]\.)|(\b[bfMt]\.)|(\b[bfMt]\.)|(\b[bfMt]\.)|(\bt:)|([~/\\}]))(?![.:])'
+    - match: '\b(([bfMt]\.)|([bfMt]\.)|([bfMt]\.)|(t:))(?![.:])'
+      scope: identifier.adverb.j
+    - match: '(([/\\]\.)|([~/\\}]))(?![.:])'
       scope: identifier.adverb.j
 
+  conjunctions:
+    - match: '\b(([dDHT]\.)|([DLS]:))(?![.:])'
+      scope: identifier.conjunction.j
+    - match: '((&\.:)|([&@!;]\.)|([&@!`^]:)|([&@`"]))(?![.:])'
+      scope: identifier.conjunction.j
+    - match: '\s(([.:][.:])|([.:]))(?![.:])'
+      scope: identifier.conjunction.j
+
   controls:
-    - match: \b(assert|break|continue|return|do|if|else|elseif|end)\.(?![.:])
+    - match: \b(if|do|else|elseif|end|for|select|case|fcase)\.(?![.:])
       scope: keyword.control.j
-    - match: \b(for|select|case|fcase|throw|try|catch|catchd|catcht)\.(?![.:])
+    - match: \b(assert|break|continue|return|while|whilst)\.(?![.:])
       scope: keyword.control.j
-    - match: \b(while|whilst|for_{{validname}}|goto_{{validname}}|label_{{validname}})\.(?![.:])
+    - match: \b(throw|try|catch|catchd|catcht)\.(?![.:])
+      scope: keyword.control.j
+    - match: \b(for_{{validname}}|goto_{{validname}}|label_{{validname}})\.(?![.:])
       scope: keyword.control.j
 
   expargs:
@@ -81,7 +97,7 @@ contexts:
       scope: exparg
 
   expdef:
-    - meta_scope: definition.expdef.j
+    - meta_content_scope: definition.expdef.j
     - include: comments
     - include: strings
     - include: openquote
@@ -90,13 +106,15 @@ contexts:
     - include: verbs
     - include: adverbs
     - include: conjunctions
+    - include: globals
+    - include: locals
     - include: controls
     - include: expargs
     - match: '{{closeexpdef}}'
       pop: true
 
   noundef:
-    - meta_scope: definition.noundef.j
+    - meta_content_scope: definition.noundef.j
     - match: '{{closeexpdef}}'
       pop: true
 
