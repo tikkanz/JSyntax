@@ -53,22 +53,19 @@ contexts:
         0: punctuation.definition.string.begin.j
       push:
         - meta_scope: string.quoted.j
-        - match: "'"
+        - match: (\')|(\n)
           captures:
-            0: punctuation.definition.string.end.j
-          pop: true
-        - match: $
-          captures:
-            0: invalid.illegal.missing-string-end.j
+            1: punctuation.definition.string.end.j
+            2: invalid.illegal.unclosed-string.j
           pop: true
 
   numbers:
     - match: '\b[_0-9][_0-9\.a-zA-Z]*\b(?![.:])'
-      scope: constant.numeric
+      scope: constant.numeric.j
 
   nouns:
     - match: '\b(_\.|a\.|a:)(?![.:])'
-      scope: noun.j
+      scope: identifier.noun.j
 
   verbs:
       # numbers with inflection and double inflections
