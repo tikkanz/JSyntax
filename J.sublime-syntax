@@ -12,12 +12,9 @@ contexts:
   main:
     - include: comments
     - include: strings
-    - match: \b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b
-      push: expdef
-    - match: '\b(0|noun)\s+(:\s*0|define)\b'
-      push: noundef
-    - match: ^\s*\bNote\b(?!\s*\=[:.])\s*[\'\d].*$
-      push: notes
+    - include: expdef
+    - include: noundef
+    - include: notes
     - include: note
     - include: numbers
     - include: nouns
@@ -26,6 +23,25 @@ contexts:
     - include: conjunctions
     - include: globals
     - include: locals
+
+  # multi-line explicit verb/adverb/conjunction definition
+  expdef:
+    - match: \b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b
+      push:
+        - meta_content_scope: definition.expdef.j
+        - include: comments
+        - include: strings
+        - include: numbers
+        - include: nouns
+        - include: verbs
+        - include: adverbs
+        - include: conjunctions
+        - include: globals
+        - include: locals
+        - include: controls
+        - include: expargs
+        - match: '{{closeexpdef}}'
+          pop: true
 
   comments:
     - match: \bNB\..*$
@@ -46,14 +62,6 @@ contexts:
             0: invalid.illegal.missing-string-end.j
           pop: true
 
-  globals:
-    - match: "=:"
-      scope: global
-
-  locals:
-    - match: "=."
-      scope: local
-
   numbers:
     - match: '\b[_0-9][_0-9\.a-zA-Z]*\b(?![.:])'
       scope: constant.numeric
@@ -63,19 +71,19 @@ contexts:
       scope: noun.j
 
   verbs:
-      #numbers with inflection and double inflections
+      # numbers with inflection and double inflections
     - match: '((_?[1-9]:)|(\b0:)|({::))(?![.:])'
       scope: identifier.verb.j
-      #letters with inflection
+      # letters with inflection
     - match: '\b((p\.\.)|([AcCeEiIjLopr]\.)|([ipqsux]:))(?![.:])'
       scope: identifier.verb.j
-      #symbols with . inflection
+      # symbols with . inflection
     - match: '([<>+*\-%$|,#{}^~"?]\.)(?![.:])'
       scope: identifier.verb.j
-      #symbols with : inflection
+      # symbols with : inflection
     - match: '([<>+*\-%$|,#{};~"_/\\\[]:)(?![.:])'
       scope: identifier.verb.j
-      #symbols with no inflection
+      # symbols with no inflection
     - match: '([<>+*\-%$|,#{!;^=?\[\]])(?![.:])'
       scope: identifier.verb.j
 
@@ -88,7 +96,7 @@ contexts:
       scope: identifier.adverb.j
 
   conjunctions:
-      #letters with inflection
+      # letters with inflection
     - match: '\b(([dDHT]\.)|([DLS]:))(?![.:])'
       scope: identifier.conjunction.j
       # symbols with double inflection, . or : inflection or no inflection
@@ -108,36 +116,36 @@ contexts:
     - match: \b(for_{{validname}}|goto_{{validname}}|label_{{validname}})\.(?![.:])
       scope: keyword.control.j
 
+  globals:
+    - match: "=:"
+      scope: global
+
+  locals:
+    - match: "=."
+      scope: local
+
+  # argument identifiers within explicit definition blocks
   expargs:
     - match: \b[nmuvxy](?![\w.:])
       scope: exparg
 
-  expdef:
-    - meta_content_scope: definition.expdef.j
-    - include: comments
-    - include: strings
-    - include: numbers
-    - include: nouns
-    - include: verbs
-    - include: adverbs
-    - include: conjunctions
-    - include: globals
-    - include: locals
-    - include: controls
-    - include: expargs
-    - match: '{{closeexpdef}}'
-      pop: true
-
+  # multi-line noun definition
   noundef:
-    - meta_content_scope: definition.noundef.j
-    - match: '{{closeexpdef}}'
-      pop: true
+    - match: '\b(0|noun)\s+(:\s*0|define)\b'
+      push:
+        - meta_content_scope: definition.noundef.j
+        - match: '{{closeexpdef}}'
+          pop: true
 
+  # multi-line note
   notes:
-    - meta_scope: definition.note.j
-    - match: '{{closeexpdef}}'
-      pop: true
+    - match: ^\s*\bNote\b(?!\s*\=[:.])\s*[\'\d].*$
+      push:
+        - meta_scope: definition.note.j
+        - match: '{{closeexpdef}}'
+          pop: true
 
+  # single-line note
   note:
     - match: \bNote\b(?!\s*\=[:.])\s*['\d].*$
       scope: comment.j
