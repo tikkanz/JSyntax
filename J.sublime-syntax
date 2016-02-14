@@ -63,28 +63,38 @@ contexts:
       scope: noun.j
 
   verbs:
+      #numbers with inflection and double inflections
     - match: '((_?[1-9]:)|(\b0:)|({::))(?![.:])'
       scope: identifier.verb.j
+      #letters with inflection
     - match: '\b((p\.\.)|([AcCeEiIjLopr]\.)|([ipqsux]:))(?![.:])'
       scope: identifier.verb.j
+      #symbols with . inflection
     - match: '([<>+*\-%$|,#{}^~"?]\.)(?![.:])'
       scope: identifier.verb.j
+      #symbols with : inflection
     - match: '([<>+*\-%$|,#{};~"_/\\\[]:)(?![.:])'
       scope: identifier.verb.j
+      #symbols with no inflection
     - match: '([<>+*\-%$|,#{!;^=?\[\]])(?![.:])'
       scope: identifier.verb.j
 
   adverbs:
+      # letters with inflection
     - match: '\b(([bfMt]\.)|(t:))(?![.:])'
       scope: identifier.adverb.j
+      # symbols with and without . inflection
     - match: '(([/\\]\.)|([~/\\}]))(?![.:])'
       scope: identifier.adverb.j
 
   conjunctions:
+      #letters with inflection
     - match: '\b(([dDHT]\.)|([DLS]:))(?![.:])'
       scope: identifier.conjunction.j
+      # symbols with double inflection, . or : inflection or no inflection
     - match: '((&\.:)|([&@!;]\.)|([&@!`^]:)|([&@`"]))(?![.:])'
       scope: identifier.conjunction.j
+      # . or : with or without inflection (need leading whitespace)
     - match: '\s(([.:][.:])|([.:]))(?![.:])'
       scope: identifier.conjunction.j
 
