@@ -12,7 +12,6 @@ contexts:
   main:
     - include: comments
     - include: strings
-    - include: openquote
     - match: \b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b
       push: expdef
     - match: '\b(0|noun)\s+(:\s*0|define)\b'
@@ -33,12 +32,19 @@ contexts:
       scope: comment.j
 
   strings:
-    - match: \'.*\'
-      scope: string.quoted.j
-
-  openquote:
-    - match: \'[^\']*$
-      scope: invalid.illegal.openquote.j
+    - match: "'"
+      captures:
+        0: punctuation.definition.string.begin.j
+      push:
+        - meta_scope: string.quoted.j
+        - match: "'"
+          captures:
+            0: punctuation.definition.string.end.j
+          pop: true
+        - match: $
+          captures:
+            0: invalid.illegal.missing-string-end.j
+          pop: true
 
   globals:
     - match: "=:"
@@ -59,7 +65,7 @@ contexts:
   verbs:
     - match: '((_?[1-9]:)|(\b0:)|({::))(?![.:])'
       scope: identifier.verb.j
-    - match: '\b(([AcCeEiIjLopr]\.)|([ipqsux]:)|(p\.\.))(?![.:])'
+    - match: '\b((p\.\.)|([AcCeEiIjLopr]\.)|([ipqsux]:))(?![.:])'
       scope: identifier.verb.j
     - match: '([<>+*\-%$|,#{}^~"?]\.)(?![.:])'
       scope: identifier.verb.j
@@ -69,7 +75,7 @@ contexts:
       scope: identifier.verb.j
 
   adverbs:
-    - match: '\b(([bfMt]\.)|([bfMt]\.)|([bfMt]\.)|(t:))(?![.:])'
+    - match: '\b(([bfMt]\.)|(t:))(?![.:])'
       scope: identifier.adverb.j
     - match: '(([/\\]\.)|([~/\\}]))(?![.:])'
       scope: identifier.adverb.j
@@ -100,7 +106,6 @@ contexts:
     - meta_content_scope: definition.expdef.j
     - include: comments
     - include: strings
-    - include: openquote
     - include: numbers
     - include: nouns
     - include: verbs
