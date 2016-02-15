@@ -23,6 +23,7 @@ contexts:
     - include: conjunctions
     - include: globals
     - include: locals
+    - include: trailingws
 
   # multi-line explicit verb/adverb/conjunction definition
   expdef:
@@ -40,6 +41,7 @@ contexts:
         - include: locals
         - include: controls
         - include: expargs
+        - include: trailingws
         - match: '{{closeexpdef}}'
           pop: true
 
@@ -58,6 +60,10 @@ contexts:
             1: punctuation.definition.string.end.j
             2: invalid.illegal.unclosed-string.j
           pop: true
+
+  trailingws:
+    - match: (\s)+\n
+      scope: invalid.deprecated.trailing-whitespace
 
   numbers:
     - match: '\b[_0-9][_0-9\.a-zA-Z]*\b(?![.:])'
@@ -115,11 +121,11 @@ contexts:
 
   globals:
     - match: "=:"
-      scope: global
+      scope: copula.global
 
   locals:
     - match: "=."
-      scope: local
+      scope: copula.local
 
   # argument identifiers within explicit definition blocks
   expargs:
