@@ -1,34 +1,37 @@
 NB. SYNTAX TEST "Packages/J.sublime-syntax"
 
 NB. foo
-NB.  ^ source.j comment.j
+NB.  ^ source.j comment.line.j
 
-     'mystring'
+     'mystring Note''s dksl'
 NB.  ^ punctuation.definition.string.begin
 NB.     ^ string.quoted.j
-NB.           ^ punctuation.definition.string.end
+NB.                ^ punctuation.definition.string.end
 'Hello, World! NB. not a comment'
 NB. ^ string.quoted.j
 NB.                  ^ string.quoted.j
 
-3 : 0
+x y Note 'This is a single-line Note/comment'
+NB.  ^ comment.line.j
+
+my_multiline_verb=: 3 : 0
     count=. #y
 NB.      ^^ copula.local.j
 NB.         ^ identifier.verb.j
 NB.          ^ argument.explicit.j
     if. 1<count do. return. end.
-NB. ^^^ definition.expdef.j keyword.control.j
-NB.             ^^^ definition.expdef.j keyword.control.j
-NB.                 ^^^^^^^ definition.expdef.j keyword.control.j
-NB.                         ^^^^ definition.expdef.j keyword.control.j
+NB. ^^^ definition.explicit keyword.control.j
+NB.             ^^^ definition.explicit keyword.control.j
+NB.                 ^^^^^^^ definition.explicit keyword.control.j
+NB.                         ^^^^ definition.explicit keyword.control.j
 NB.     ^ constant.numeric.j
 )
-
+NB. <- punctuation.definition.explicit.block.end
     if. 0 <: count do. break. end.
 NB.  <- source.j
 NB.     ^ constant.numeric.j
 NB.       ^^ identifier.verb.j
-     NB.  <- source.j - keyword.control.j
+    NB.  <- source.j - keyword.control.j
                     NB.  <- source.j - keyword.control.j
 
 OUT_SireSumry=: 'SireSummary.csv''

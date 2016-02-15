@@ -28,8 +28,9 @@ contexts:
   # multi-line explicit verb/adverb/conjunction definition
   expdef:
     - match: \b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b
+      scope: punctuation.definition.explicit.block.begin.j
       push:
-        - meta_content_scope: definition.expdef.j
+        - meta_content_scope: definition.explicit.block.j
         - include: comments
         - include: strings
         - include: numbers
@@ -43,11 +44,12 @@ contexts:
         - include: expargs
         - include: trailingws
         - match: '{{closeexpdef}}'
+          scope: punctuation.definition.explicit.block.end.j
           pop: true
 
   comments:
     - match: \bNB\..*$
-      scope: comment.j
+      scope: comment.line.j
 
   strings:
     - match: "'"
@@ -135,20 +137,24 @@ contexts:
   # multi-line noun definition
   noundef:
     - match: '\b(0|noun)\s+(:\s*0|define)\b'
+      scope: punctuation.definition.explicit.begin.j
       push:
-        - meta_content_scope: definition.noundef.j
+        - meta_content_scope: string.noun.j
         - match: '{{closeexpdef}}'
+          scope: punctuation.definition.explicit.end.j
           pop: true
 
   # multi-line note
   notes:
     - match: ^\s*\bNote\b(?!\s*\=[:.])\s*[\'\d].*$
+      scope: punctuation.comment.block.begin.j
       push:
-        - meta_scope: definition.note.j
+        - meta_scope: comment.block.j
         - match: '{{closeexpdef}}'
+          scope: punctuation.comment.block.end.j
           pop: true
 
   # single-line note
   note:
     - match: \bNote\b(?!\s*\=[:.])\s*['\d].*$
-      scope: comment.j
+      scope: comment.line.j
