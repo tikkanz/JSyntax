@@ -121,16 +121,16 @@ contexts:
 
   globals:
     - match: "=:"
-      scope: copula.global
+      scope: copula.global.j
 
   locals:
     - match: "=."
-      scope: copula.local
+      scope: copula.local.j
 
   # argument identifiers within explicit definition blocks
   expargs:
     - match: \b[nmuvxy](?![\w.:])
-      scope: exparg
+      scope: argument.explicit.j
 
   # multi-line noun definition
   noundef:
