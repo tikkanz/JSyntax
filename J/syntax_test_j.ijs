@@ -1,4 +1,4 @@
-NB. SYNTAX TEST "Packages/J.sublime-syntax"
+NB. SYNTAX TEST "Packages/J/J.sublime-syntax"
 
 NB. foo
 NB.  ^ source.j comment.line.j

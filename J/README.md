@@ -29,7 +29,7 @@ Install
 
 Sublime Text 3 can use both `.tmLanguage` and (after build 3103) `.sublime-syntax` file formats for syntax highlighting. The `.sublime-syntax` format is more [concise and easier to develop](http://www.sublimetext.com/docs/3/syntax.html). The `.sublime-syntax` file here is more complete.
 
-Add the `J.sublime-syntax` (and optionally `syntax_test_j.ijs`) to 
+Add the `J` folder and contents to: 
   * `"%APPDATA%/Sublime Text 3/Packages/"` (Windows),
   * `~/Library/Application\ Support/Sublime\ Text\ 3/Packages/` (Mac)
 
