@@ -18,7 +18,7 @@ my_multiline_verb=: 3 : 0
     count=. #y
 NB.      ^^ copula.local.j
 NB.         ^ identifier.verb.j
-NB.          ^ argument.explicit.j
+NB.          ^ variable.parameter.j
     if. 1<count do. return. end.
 NB. ^^^ definition.explicit keyword.control.j
 NB.             ^^^ definition.explicit keyword.control.j

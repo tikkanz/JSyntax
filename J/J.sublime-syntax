@@ -132,7 +132,7 @@ contexts:
   # argument identifiers within explicit definition blocks
   expargs:
     - match: \b[nmuvxy](?![\w.:])
-      scope: argument.explicit.j
+      scope: variable.parameter.j
 
   # multi-line noun definition
   noundef:
