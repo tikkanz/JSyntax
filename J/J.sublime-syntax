@@ -137,11 +137,11 @@ contexts:
   # multi-line noun definition
   noundef:
     - match: '\b(0|noun)\s+(:\s*0|define)\b'
-      scope: punctuation.definition.explicit.begin.j
+      scope: punctuation.definition.explicit.block.begin.j
       push:
         - meta_content_scope: string.noun.j
         - match: '{{closeexpdef}}'
-          scope: punctuation.definition.explicit.end.j
+          scope: punctuation.definition.explicit.block.end.j
           pop: true
 
   # multi-line note

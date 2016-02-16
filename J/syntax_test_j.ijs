@@ -12,9 +12,18 @@ NB. ^ string.quoted.j
 NB.                  ^ string.quoted.j
 
 x y Note 'This is a single-line Note/comment'
+NB. <- source.j - variable.parameter.j
 NB.  ^ comment.line.j
 
+Note 'This is a multi-line Note/comment'
+NB.   ^ punctuation.comment.block.begin
+The content is 
+NB.  ^ comment.block
+)
+NB. <- punctuation.comment.block.end
+
 my_multiline_verb=: 3 : 0
+NB.                 ^ punctuation.definition.explicit.block.begin
     count=. #y
 NB.      ^^ copula.local.j
 NB.         ^ identifier.verb.j
@@ -27,6 +36,15 @@ NB.                         ^^^^ definition.explicit keyword.control.j
 NB.     ^ constant.numeric.j
 )
 NB. <- punctuation.definition.explicit.block.end
+
+my_multiline_noun=: noun define
+NB.                 ^ punctuation.definition.explicit.block.begin
+This is the first line of a multi-line noun 
+This is the 2nd line.
+NB.   ^ string.noun
+)
+NB.  <- punctuation.definition.explicit.block.end
+
     if. 0 <: count do. break. end.
 NB.  <- source.j
 NB.     ^ constant.numeric.j
