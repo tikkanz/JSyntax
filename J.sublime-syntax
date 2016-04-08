@@ -28,7 +28,7 @@ contexts:
 
   # multi-line explicit verb/adverb/conjunction definition
   expdef:
-    - match: \b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b
+    - match: '\b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b'
       scope: punctuation.definition.explicit.block.begin.j
       push:
         - meta_content_scope: definition.explicit.block.j
@@ -49,7 +49,7 @@ contexts:
           pop: true
 
   comments:
-    - match: \bNB\..*$
+    - match: '\bNB\..*$'
       scope: comment.line.j
 
   strings:
@@ -58,14 +58,14 @@ contexts:
         0: punctuation.definition.string.begin.j
       push:
         - meta_scope: string.quoted.j
-        - match: (\')|(\n)
+        - match: "(')|(\n)"
           captures:
             1: punctuation.definition.string.end.j
             2: invalid.illegal.unclosed-string.j
           pop: true
 
   trailingws:
-    - match: (\s)+\n
+    - match: '(\s)+\n'
       scope: invalid.deprecated.trailing-whitespace
 
   numbers:
@@ -106,33 +106,33 @@ contexts:
     - match: '\b(([dDHT]\.)|([DLS]:)){{noinflect}}'
       scope: identifier.conjunction.j
       # symbols with double inflection, . or : inflection or no inflection
-    - match: '((&\.:)|([&@!;]\.)|([&@!`^]:)|([&@`"])){{noinflect}}'
+    - match: '((&.:)|([&@!;]\.)|([&@!`^]:)|([&@`"])){{noinflect}}'
       scope: identifier.conjunction.j
       # . or : with or without inflection (need leading whitespace)
     - match: '\s(([.:][.:])|([.:])){{noinflect}}'
       scope: identifier.conjunction.j
 
   controls:
-    - match: \b(if|do|else|elseif|end|for|select|case|fcase)\.{{noinflect}}
+    - match: '\b(if|do|else|elseif|end|for|select|case|fcase)\.{{noinflect}}'
       scope: keyword.control.j
-    - match: \b(assert|break|continue|return|while|whilst)\.{{noinflect}}
+    - match: '\b(assert|break|continue|return|while|whilst)\.{{noinflect}}'
       scope: keyword.control.j
-    - match: \b(throw|try|catch|catchd|catcht)\.{{noinflect}}
+    - match: '\b(throw|try|catch|catchd|catcht)\.{{noinflect}}'
       scope: keyword.control.j
-    - match: \b(for_{{validname}}|goto_{{validname}}|label_{{validname}})\.{{noinflect}}
+    - match: '\b(for_{{validname}}|goto_{{validname}}|label_{{validname}})\.{{noinflect}}'
       scope: keyword.control.j
 
   globals:
-    - match: "=:"
+    - match: '=:'
       scope: copula.global.j
 
   locals:
-    - match: "=."
+    - match: '=\.'
       scope: copula.local.j
 
   # argument identifiers within explicit definition blocks
   expargs:
-    - match: \b[nmuvxy](?![\w.:])
+    - match: '\b[nmuvxy](?![\w.:])'
       scope: variable.parameter.j
 
   # multi-line noun definition
