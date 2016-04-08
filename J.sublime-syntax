@@ -157,5 +157,5 @@ contexts:
 
   # single-line note
   note:
-    - match: \bNote\b(?!\s*\=[:.])\s*['\d].*$
+    - match: \bNote\b(?!\s*\=[:.])\s*[\'\d].*$
       scope: comment.line.j
