@@ -23,6 +23,8 @@ Contains the following scopes:
 
 Syntax highlighting is context aware, so keyword.control.j and variable.paramenter.j are only identified if contained within the definition.explicit.block.j context.
 
+Supports toggling single-line comments and comment blocks.
+
 
 Install
 -------
