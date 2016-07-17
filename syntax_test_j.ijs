@@ -55,7 +55,7 @@ NB.       ^^ identifier.verb.j
 OUT_SireSumry=: 'SireSummary.csv''
 NB.          ^^ copula.global.j
 NB.                  ^ string.quoted.j
-NB.                                ^ invalid.illegal.unclosed-string.j
+NB.                               ^ invalid.illegal.unclosed-string.j
     ^. }. ^: `:  
 NB. ^^ identifier.verb.j
 NB.    ^^ identifier.verb.j
