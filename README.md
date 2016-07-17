@@ -19,9 +19,11 @@ Contains the following scopes:
  *  definition.explicit.block.j (matches multi-line verb, adverb & conjunction definitions)
  *  string.noun.j (matches multi-line nouns)
  *  comment.block.j (matches multi-line notes)
- *  variable.parameter.j (matches explicit references to arguments within )
+ *  variable.parameter.j (matches explicit references to arguments within explicit blocks)
 
 Syntax highlighting is context aware, so keyword.control.j and variable.paramenter.j are only identified if contained within the definition.explicit.block.j context.
+
+Supports toggling single-line comments and comment blocks.
 
 
 Install
