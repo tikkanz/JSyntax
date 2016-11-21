@@ -63,7 +63,7 @@ NB.       ^^ identifier.conjunction.j
 NB.          ^^ identifier.conjunction.j
 NB.              ^ invalid.deprecated.trailing-whitespace
 
-    _9: _8: 7: *0: _0: p.. A. c.C.e.E.i.I.j.L.o.p.r.i:p:q:s:u:x:
+    _9: _8: 7: *0: _0: p.. {:: A. c.C.e.E.i.I.j.L.o.p.r.i:p:q:s:u:x:
 NB. ^^^ identifier.verb.j
 NB.     ^^^ identifier.verb.j
 NB.         ^^ identifier.verb.j
@@ -71,8 +71,9 @@ NB.            ^ identifier.verb.j
 NB.             ^^ identifier.verb.j
 NB.                ^^^ source.j - constant.numeric
 NB.                    ^^^ source.j identifier.verb.j
-NB.                        ^^ identifier.verb.j
-NB.                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ identifier.verb.j
+NB.                        ^^^ identifier.verb.j
+NB.                            ^^ identifier.verb.j
+NB.                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ identifier.verb.j
 
       <.>.+.*.-.%.^.$.~.|.,.#.{.}.".?.
 NB.   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ identifier.verb.j
@@ -96,8 +97,15 @@ NB. ^^ identifier.conjunction.j
 NB.    ^^^^^^ identifier.conjunction.j
     &:@:^:!:`:&"
 NB. ^^^^^^^^^^^^ identifier.conjunction.j
-     : . :. .: ::
-NB. ^^^^^^^^^^^^^ identifier.conjunction.j
+     : . :. .. .: ::
+NB. ^^^^^^^^^^^^^^^^ identifier.conjunction.j
+
+     &':'
+NB.  ^ identifier.conjunction.j
+NB.   ^ punctuation.definition.string.begin
+NB.    ^ string.quoted.j
+NB.     ^ punctuation.definition.string.end
+
     3:0
 NB.  ^ identifier.verb.j - identifier.conjunction.j
 NB.   ^ constant.numeric
