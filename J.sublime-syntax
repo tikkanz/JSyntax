@@ -106,7 +106,7 @@ contexts:
     - match: '\b(([dDHT]\.)|([DLS]:)){{noinflect}}'
       scope: identifier.conjunction.j
       # symbols with double inflection, . or : inflection or no inflection
-    - match: '((&.:)|([&@!;]\.)|([&@!`^]:)|([&@`"])){{noinflect}}'
+    - match: '((&\.:)|([&@!;]\.)|([&@!`^]:)|([&@`"])){{noinflect}}'
       scope: identifier.conjunction.j
       # . or : with or without inflection (need leading whitespace)
     - match: '\s(([.:][.:])|([.:])){{noinflect}}'
