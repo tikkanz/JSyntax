@@ -74,43 +74,43 @@ contexts:
 
   nouns:
     - match: '\b(_\.|a\.|a:){{noinflect}}'
-      scope: identifier.noun.j
+      scope: keyword.other.noun.j
 
   verbs:
       # numbers with inflection and double inflections
     - match: '((_?[1-9]:)|(\b0:)|({::)){{noinflect}}'
-      scope: identifier.verb.j
+      scope: keyword.operator.verb.j
       # letters with inflection
     - match: '\b((p\.\.)|([AcCeEiIjLopr]\.)|([ipqsux]:)){{noinflect}}'
-      scope: identifier.verb.j
+      scope: keyword.operator.verb.j
       # symbols with . inflection
     - match: '([<>+*\-%$|,#{}^~"?]\.){{noinflect}}'
-      scope: identifier.verb.j
+      scope: keyword.operator.verb.j
       # symbols with : inflection
     - match: '([<>+*\-%$|,#{};~"_/\\\[]:){{noinflect}}'
-      scope: identifier.verb.j
+      scope: keyword.operator.verb.j
       # symbols with no inflection
     - match: '([<>+*\-%$|,#{!;^=?\[\]]){{noinflect}}'
-      scope: identifier.verb.j
+      scope: keyword.operator.verb.j
 
   adverbs:
       # letters with inflection
     - match: '\b(([bfMt]\.)|(t:)){{noinflect}}'
-      scope: identifier.adverb.j
+      scope: keyword.operator.adverb.j
       # symbols with and without . inflection
     - match: '(([/\\]\.)|([~/\\}])){{noinflect}}'
-      scope: identifier.adverb.j
+      scope: keyword.operator.adverb.j
 
   conjunctions:
       # letters with inflection
     - match: '\b(([dDHT]\.)|([DLS]:)){{noinflect}}'
-      scope: identifier.conjunction.j
+      scope: keyword.operator.conjunction.j
       # symbols with double inflection, . or : inflection or no inflection
     - match: '((&\.:)|([&@!;]\.)|([&@!`^]:)|([&@`"])){{noinflect}}'
-      scope: identifier.conjunction.j
+      scope: keyword.operator.conjunction.j
       # . or : with or without inflection (need leading whitespace)
     - match: '\s(([.:][.:])|([.:])){{noinflect}}'
-      scope: identifier.conjunction.j
+      scope: keyword.operator.conjunction.j
 
   controls:
     - match: '\b(if|do|else|elseif|end|for|select|case|fcase)\.{{noinflect}}'
@@ -138,21 +138,21 @@ contexts:
   # multi-line noun definition
   noundef:
     - match: '\b(0|noun)\s+(:\s*0|define)\b'
-      scope: punctuation.definition.explicit.block.begin.j
+      scope: punctuation.definition.string.block.begin.j
       push:
         - meta_content_scope: string.noun.j
         - match: '{{closeexpdef}}'
-          scope: punctuation.definition.explicit.block.end.j
+          scope: punctuation.definition.string.block.end.j
           pop: true
 
   # multi-line note
   notes:
     - match: ^\s*\bNote\b(?!\s*\=[:.])\s*[\'\d].*$
-      scope: punctuation.comment.block.begin.j
+      scope: punctuation.definition.comment.block.begin.j
       push:
         - meta_scope: comment.block.j
         - match: '{{closeexpdef}}'
-          scope: punctuation.comment.block.end.j
+          scope: punctuation.definition.comment.block.end.j
           pop: true
 
   # single-line note
