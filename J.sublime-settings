@@ -1,0 +1,19 @@
+// These settings override both User and Default settings for the J syntax
+{
+
+    // Controls auto pairing of quotes, brackets etc
+    "auto_match_enabled": false,
+
+    // Set to false to not highlight square brackets. This only takes effect if
+    // match_brackets is true
+    "match_brackets_square": false,
+
+    // Set to false to not highlight curly brackets. This only takes effect if
+    // match_brackets is true
+    "match_brackets_braces": false,
+
+    // Set to false to not highlight angle brackets. This only takes effect if
+    // match_brackets is true
+    "match_brackets_angle": false,
+
+}
