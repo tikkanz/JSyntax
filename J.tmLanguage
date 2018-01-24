@@ -14,7 +14,7 @@
     <array>
         <dict>
             <key>name</key>
-            <string>string.j</string>
+            <string>string.quoted.j</string>
 
             <key>match</key>
             <string>('[^']*')</string>
@@ -23,7 +23,7 @@
 
         <dict>
             <key>name</key>
-            <string>comment.j</string>
+            <string>comment.line.j</string>
 
             <key>match</key>
             <string>(?:^|[ )])(NB\..*$)</string>
@@ -54,7 +54,7 @@
 
         <dict>
             <key>name</key>
-            <string>keyword.j</string>
+            <string>keyword.control.j</string>
 
             <key>match</key>
             <string>(?&lt;![_a-zA-Z0-9])((?:while\.)|(?:whilst\.)|(?:if\.)|(?:elseif\.)|(?:else\.)|(?:do\.)|(?:end\.))</string>
@@ -62,7 +62,7 @@
 
         <dict>
             <key>name</key>
-            <string>noun.j</string>
+            <string>keyword.other.noun.j</string>
 
             <key>match</key>
             <string>((?&lt;![_a-zA-Z0-9])(_\.|a\.|a:)(?![\.\:]))</string>
@@ -70,7 +70,7 @@
 
         <dict>
             <key>name</key>
-            <string>conjunction.j</string>
+            <string>keyword.operator.conjunction.j</string>
 
             <key>match</key>
             <string>((?&lt;![_a-zA-Z0-9])(?:[dDHT]\.)|(?&lt;![_a-zA-Z0-9])(?:[DLS]:)|(&amp;\.:)|([\;\!\@&amp;]\.)|([\^\!\`\@&amp;]:)|([\"\`\@&amp;])|(\s[\.\:][\.\:])|(\s[\.\:]))(?![\.\:])</string>
@@ -78,7 +78,7 @@
 
         <dict>
             <key>name</key>
-            <string>adverb.j</string>
+            <string>keyword.operator.adverb.j</string>
 
             <key>match</key>
             <string>(([\/\\]\.)|(?&lt;![_a-zA-Z0-9])(?:[bfMt]\.)|(?&lt;![_a-zA-Z0-9])(?:t:)|([\~\/\\\}]))(?![\.\:])</string>
@@ -86,7 +86,7 @@
 
         <dict>
             <key>name</key>
-            <string>verb.j</string>
+            <string>keyword.operator.verb.j</string>
 
             <key>match</key>
             <string>((?:_?[0-9]\:)|(?&lt;![_a-zA-Z0-9])(?:p\.\.)|(?&lt;![_a-zA-Z0-9])(?:[AcCeEiIjLopr]\.)|(?&lt;![_a-zA-Z0-9])(?:[ipqsux]:)|({::)|([&lt;&gt;\+\*\-\%\^\$\~\|\,\#\{\}&quot;\?]\.)|([&lt;&gt;\_\+\*\-\%\$\~\|\,\;\#\/\\\[\{\}&quot;]:)|([&lt;&gt;\=\+\*\-\%\^\$\|\,\;\#\!\[\]\{\?]))(?![\.\:])</string>
