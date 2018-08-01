@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
   <dict>
     <key>comment</key>
-    <string>Reference to the Oniguruma Regex libraray: https://github.com/kkos/oniguruma/blob/master/doc/RE</string>
+    <string>Reference to the Oniguruma Regex libraray:
+  https://github.com/kkos/oniguruma/blob/master/doc/RE
+
+* The reference version for this TextMate grammar is the YAML version here:
+  https://github.com/tikkanz/j-vscode/blob/master/syntaxes/j.tmLanguage.yaml
+  Convert to other formats (JSON, PLIST) using utils (e.g. TextMate Languages extension for VS Code)
+* Some in comments throughout the grammar
+</string>
+    <key>name</key>
+    <string>J</string>
+    <key>scopeName</key>
+    <string>source.j</string>
     <key>fileTypes</key>
     <array>
       <string>ijs</string>
       <string>ijt</string>
     </array>
-    <key>firstLineMatch</key>
-    <string>^#!.*\bjconsole\s*$</string>
-    <key>foldingStartMarker</key>
-    <string>^\s*(?:if|while|for|try)\.(?![.:])(?!.*\bend\b).*$</string>
-    <key>foldingStopMarker</key>
-    <string>^\s*(?:end)\.(?![.:]).*$</string>
-    <key>name</key>
-    <string>J</string>
     <key>patterns</key>
     <array>
       <dict>
@@ -58,163 +61,13 @@
     </array>
     <key>repository</key>
     <dict>
-      <key>operator</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>match</key>
-            <string>\b(_\.|a\.|a:)(?![.:])</string>
-            <key>name</key>
-            <string>keyword.other.noun.j</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>((_?[1-9]:)|(\b0:)|({::))(?![.:])</string>
-            <key>name</key>
-            <string>keyword.operator.verb.j</string>
-            <key>comment</key>
-            <string>numbers with inflection and double inflections</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>\b((p\.\.)|([AcCeEiIjLopr]\.)|([ipqsux]:))(?![.:])</string>
-            <key>name</key>
-            <string>keyword.operator.verb.j</string>
-            <key>comment</key>
-            <string>letters with inflection</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>([&lt;&gt;\+\*\-%$|,#{}^~&quot;?]\.)(?![.:])</string>
-            <key>name</key>
-            <string>keyword.operator.verb.j</string>
-            <key>comment</key>
-            <string>symbols with . inflection</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>([&lt;&gt;\+\*\-%$|,#{};~&quot;_/\\\[]:)(?![.:])</string>
-            <key>name</key>
-            <string>keyword.operator.verb.j</string>
-            <key>comment</key>
-            <string>symbols with : inflection</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>([&lt;&gt;\+\*\-%$|,#{!;^=?\[\]])(?![.:])</string>
-            <key>name</key>
-            <string>keyword.operator.verb.j</string>
-            <key>comment</key>
-            <string>symbols with no inflection</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>\b(([bfMt]\.)|(t:))(?![.:])</string>
-            <key>name</key>
-            <string>keyword.operator.adverb.j</string>
-            <key>comment</key>
-            <string>letters with inflection</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>(([/\\]\.)|([~/\\}]))(?![.:])</string>
-            <key>name</key>
-            <string>keyword.operator.adverb.j</string>
-            <key>comment</key>
-            <string>symbols with and without . inflection</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>\b(([dDHT]\.)|([DLS]:))(?![.:])</string>
-            <key>name</key>
-            <string>keyword.operator.conjunction.j</string>
-            <key>comment</key>
-            <string>letters with inflection</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>((&amp;\.:)|([&amp;@!;]\.)|([&amp;@!`^]:)|([&amp;@`&quot;]))(?![.:])</string>
-            <key>name</key>
-            <string>keyword.operator.conjunction.j</string>
-            <key>comment</key>
-            <string>symbols with double inflection, . or : inflection or no inflection</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>\s(([.:][.:])|([.:]))(?![.:])</string>
-            <key>name</key>
-            <string>keyword.operator.conjunction.j</string>
-            <key>comment</key>
-            <string>. or : with or without inflection (need leading whitespace)</string>
-          </dict>
-        </array>
-      </dict>
-      <key>copula</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>match</key>
-            <string>=:</string>
-            <key>name</key>
-            <string>copula.global.j</string>
-          </dict>
-          <dict>
-            <key>match</key>
-            <string>=\.</string>
-            <key>name</key>
-            <string>copula.local.j</string>
-          </dict>
-        </array>
-      </dict>
-      <key>string</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>begin</key>
-            <string>'</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.string.begin.j</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>'</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.string.end.j</string>
-              </dict>
-            </dict>
-            <key>name</key>
-            <string>string.quoted.single.j</string>
-          </dict>
-        </array>
-      </dict>
-      <key>bracket</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>match</key>
-            <string>(?:\(|\)|,)(?!('|(?:\.'))*\.?')</string>
-            <key>name</key>
-            <string>meta.bracket.j</string>
-          </dict>
-        </array>
-      </dict>
       <key>comment</key>
       <dict>
         <key>patterns</key>
         <array>
           <dict>
+            <key>name</key>
+            <string>comment.line.j</string>
             <key>begin</key>
             <string>NB\.</string>
             <key>beginCaptures</key>
@@ -227,44 +80,36 @@
             </dict>
             <key>end</key>
             <string>\n</string>
-            <key>name</key>
-            <string>comment.line.j</string>
           </dict>
         </array>
       </dict>
-      <key>note</key>
+      <key>bracket</key>
       <dict>
         <key>patterns</key>
         <array>
           <dict>
-            <key>begin</key>
-            <string>^\s*\bNote\b</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.comment.begin.j</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>^\s*\)\s*\n</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.comment.end.j</string>
-              </dict>
-            </dict>
             <key>name</key>
-            <string>comment.block.note.j</string>
+            <string>meta.bracket.j</string>
+            <key>match</key>
+            <string>(?:\(|\)|,)(?!('|(?:\.'))*\.?')</string>
+          </dict>
+        </array>
+      </dict>
+      <key>copula</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>copula.global.j</string>
+            <key>match</key>
+            <string>=:</string>
           </dict>
           <dict>
-            <key>match</key>
-            <string>\bNote\b(?!\s*\=[:.])\s*[\'\d].*$</string>
             <key>name</key>
-            <string>comment.line.note.j</string>
+            <string>copula.local.j</string>
+            <key>match</key>
+            <string>=\.</string>
           </dict>
         </array>
       </dict>
@@ -273,44 +118,12 @@
         <key>patterns</key>
         <array>
           <dict>
-            <key>match</key>
-            <string>\b[nmuvxy](?![\w.:])</string>
-            <key>name</key>
-            <string>variable.parameter.j</string>
             <key>comment</key>
             <string>argument identifiers within explicit definition blocks</string>
-          </dict>
-        </array>
-      </dict>
-      <key>noun_defn</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>begin</key>
-            <string>\b(0|noun)\s+(:\s*0|define)\b</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.string.block.begin.j</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>^\s*\)\s*\n</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.explicit.end.j</string>
-              </dict>
-            </dict>
             <key>name</key>
-            <string>string.noun.j</string>
-            <key>comment</key>
-            <string>multi-line noun definition</string>
+            <string>variable.parameter.j</string>
+            <key>match</key>
+            <string>\b[nmuvxy](?![\w.:])</string>
           </dict>
         </array>
       </dict>
@@ -319,6 +132,8 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>name</key>
+            <string>definition.explicit.block.j</string>
             <key>begin</key>
             <string>\b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b</string>
             <key>beginCaptures</key>
@@ -339,8 +154,6 @@
                 <string>punctuation.definition.explicit.end.j</string>
               </dict>
             </dict>
-            <key>name</key>
-            <string>definition.explicit.block.j</string>
             <key>patterns</key>
             <array>
               <dict>
@@ -380,34 +193,104 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>name</key>
+            <string>keyword.control.j</string>
             <key>match</key>
             <string>\b(if|do|else|elseif|for|select|case|fcase)\.(?![.:])</string>
-            <key>name</key>
-            <string>keyword.control.j</string>
           </dict>
           <dict>
+            <key>name</key>
+            <string>keyword.control.j</string>
             <key>match</key>
             <string>\b(assert|break|continue|return|while|whilst)\.(?![.:])</string>
-            <key>name</key>
-            <string>keyword.control.j</string>
           </dict>
           <dict>
+            <key>name</key>
+            <string>keyword.control.j</string>
             <key>match</key>
             <string>\b(throw|try|catch|catchd|catcht)\.(?![.:])</string>
-            <key>name</key>
-            <string>keyword.control.j</string>
           </dict>
           <dict>
+            <key>name</key>
+            <string>keyword.control.j</string>
             <key>match</key>
             <string>\b(for_[A-Za-z][A-Za-z_0-9]*|goto_[A-Za-z][A-Za-z_0-9]*|label_[A-Za-z][A-Za-z_0-9]*)\.(?![.:])</string>
-            <key>name</key>
-            <string>keyword.control.j</string>
           </dict>
           <dict>
-            <key>match</key>
-            <string>\bend\.(?![.:])</string>
             <key>name</key>
             <string>keyword.control.end.j</string>
+            <key>match</key>
+            <string>\bend\.(?![.:])</string>
+          </dict>
+        </array>
+      </dict>
+      <key>note</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>comment.block.note.j</string>
+            <key>begin</key>
+            <string>^\s*\bNote\b</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.comment.begin.j</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>^\s*\)\s*\n</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.comment.end.j</string>
+              </dict>
+            </dict>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>dd </string>
+            <key>name</key>
+            <string>comment.line.note.j</string>
+            <key>match</key>
+            <string>\bNote\b(?!\s*\=[:.])\s*[\'\d].*$</string>
+          </dict>
+        </array>
+      </dict>
+      <key>noun_defn</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>multi-line noun definition</string>
+            <key>name</key>
+            <string>string.noun.j</string>
+            <key>begin</key>
+            <string>\b(0|noun)\s+(:\s*0|define)\b</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.block.begin.j</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>^\s*\)\s*\n</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.explicit.end.j</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>
@@ -416,15 +299,141 @@
         <key>patterns</key>
         <array>
           <dict>
-            <key>match</key>
-            <string>\b[_0-9][_0-9\.a-zA-Z]*\b(?![.:])</string>
             <key>name</key>
             <string>constant.numeric.j</string>
+            <key>match</key>
+            <string>\b[_0-9][_0-9\.a-zA-Z]*\b(?![.:])</string>
+          </dict>
+        </array>
+      </dict>
+      <key>operator</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>keyword.other.noun.j</string>
+            <key>match</key>
+            <string>\b(_\.|a\.|a:)(?![.:])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>numbers with inflection and double inflections</string>
+            <key>name</key>
+            <string>keyword.operator.verb.j</string>
+            <key>match</key>
+            <string>((_?[1-9]:)|(\b0:)|({::))(?![.:])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>letters with inflection</string>
+            <key>name</key>
+            <string>keyword.operator.verb.j</string>
+            <key>match</key>
+            <string>\b((p\.\.)|([AcCeEiIjLopr]\.)|([ipqsux]:))(?![.:])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>symbols with . inflection</string>
+            <key>name</key>
+            <string>keyword.operator.verb.j</string>
+            <key>match</key>
+            <string>([&lt;&gt;\+\*\-%$|,#{}^~"?]\.)(?![.:])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>symbols with : inflection</string>
+            <key>name</key>
+            <string>keyword.operator.verb.j</string>
+            <key>match</key>
+            <string>([&lt;&gt;\+\*\-%$|,#{};~"_/\\\[]:)(?![.:])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>symbols with no inflection</string>
+            <key>name</key>
+            <string>keyword.operator.verb.j</string>
+            <key>match</key>
+            <string>([&lt;&gt;\+\*\-%$|,#{!;^=?\[\]])(?![.:])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>letters with inflection</string>
+            <key>name</key>
+            <string>keyword.operator.adverb.j</string>
+            <key>match</key>
+            <string>\b(([bfMt]\.)|(t:))(?![.:])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>symbols with and without . inflection</string>
+            <key>name</key>
+            <string>keyword.operator.adverb.j</string>
+            <key>match</key>
+            <string>(([/\\]\.)|([~/\\}]))(?![.:])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>letters with inflection</string>
+            <key>name</key>
+            <string>keyword.operator.conjunction.j</string>
+            <key>match</key>
+            <string>\b(([dDHT]\.)|([DLS]:))(?![.:])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>symbols with double inflection, . or : inflection or no inflection</string>
+            <key>name</key>
+            <string>keyword.operator.conjunction.j</string>
+            <key>match</key>
+            <string>((&amp;\.:)|([&amp;@!;]\.)|([&amp;@!`^]:)|([&amp;@`"]))(?![.:])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>. or : with or without inflection (need leading whitespace)</string>
+            <key>name</key>
+            <string>keyword.operator.conjunction.j</string>
+            <key>match</key>
+            <string>\s(([.:][.:])|([.:]))(?![.:])</string>
+          </dict>
+        </array>
+      </dict>
+      <key>string</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>string.quoted.single.j</string>
+            <key>begin</key>
+            <string>'</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.begin.j</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>'</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.end.j</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>
     </dict>
-    <key>scopeName</key>
-    <string>source.j</string>
+    <key>firstLineMatch</key>
+    <string>^#!.*\bjconsole\s*$</string>
+    <key>foldingStartMarker</key>
+    <string>^\s*(?:if|while|for|try)\.(?![.:])(?!.*\bend\b).*$</string>
+    <key>foldingStopMarker</key>
+    <string>^\s*(?:end)\.(?![.:]).*$</string>
   </dict>
 </plist>
