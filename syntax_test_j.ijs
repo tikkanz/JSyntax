@@ -34,8 +34,24 @@ NB.             ^^^ definition.explicit keyword.control.j
 NB.                 ^^^^^^^ definition.explicit keyword.control.j
 NB.                         ^^^^ definition.explicit keyword.control.j
 NB.     ^ constant.numeric.j
+    'a b c d e f g h i j k l m n o p q r s t u v w x y z'=. i.26
+    +/ a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
+
 )
 NB. <- punctuation.definition.explicit.block.end
+
+my_multiline_conjunction=: 2 : 0
+    (u x) + (v y)
+    'a b c d e f g h i j k l m n o p q r s t u v w x y z'=. i.26
+    +/ a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z
+)
+
+my_multiline_adverb=: 1 : 0
+    if. #y do. res=. u *: y
+    else.      res=. 1
+    end.
+    res
+)
 
 my_multiline_noun=: noun define
 NB.                 ^ punctuation.definition.string.block.begin

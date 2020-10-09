@@ -44,6 +44,10 @@
       </dict>
       <dict>
         <key>include</key>
+        <string>#modifier_explicit_defn</string>
+      </dict>
+      <dict>
+        <key>include</key>
         <string>#noun_defn</string>
       </dict>
       <dict>
@@ -123,7 +127,21 @@
             <key>name</key>
             <string>variable.parameter.j</string>
             <key>match</key>
-            <string>\b[nmuvxy](?![\w.:])</string>
+            <string>\b[xy](?![\w.:])</string>
+          </dict>
+        </array>
+      </dict>
+      <key>explicit_operand</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>operand identifiers within modifier explicit definition blocks</string>
+            <key>name</key>
+            <string>variable.parameter.j</string>
+            <key>match</key>
+            <string>\b[nmuv](?![\w.:])</string>
           </dict>
         </array>
       </dict>
@@ -132,10 +150,12 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>comment</key>
+            <string>explicit definition of a verb</string>
             <key>name</key>
             <string>definition.explicit.block.j</string>
             <key>begin</key>
-            <string>\b([1-4]|13|adverb|conjunction|verb|monad|dyad)\s+(:\s*0|define)\b</string>
+            <string>\b([3-4]|13|verb|monad|dyad)\s+(:\s*0|define)\b</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -159,6 +179,73 @@
               <dict>
                 <key>include</key>
                 <string>#explicit_arg</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#operator</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#copula</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#string</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#keyword</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#number</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>modifier_explicit_defn</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>explicit definition of a modifier (adverb/conjunction)</string>
+            <key>name</key>
+            <string>definition.explicit.block.j</string>
+            <key>begin</key>
+            <string>\b([1-2]|adverb|conjunction)\s+(:\s*0|define)\b</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.explicit.begin.j</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>^\s*\)\s*\n</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.explicit.end.j</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#explicit_arg</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#explicit_operand</string>
               </dict>
               <dict>
                 <key>include</key>
