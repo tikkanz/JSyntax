@@ -48,6 +48,10 @@
       </dict>
       <dict>
         <key>include</key>
+        <string>#explicit_string_defn</string>
+      </dict>
+      <dict>
+        <key>include</key>
         <string>#noun_defn</string>
       </dict>
       <dict>
@@ -129,6 +133,8 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>comment</key>
+            <string>assignment operators</string>
             <key>name</key>
             <string>copula.global.j</string>
             <key>match</key>
@@ -180,7 +186,7 @@
             <key>name</key>
             <string>definition.explicit.block.j</string>
             <key>begin</key>
-            <string>\b([3-4]|13|verb|monad|dyad)\s+(:\s*0|define)\b</string>
+            <string>\b([34]|13|verb|monad|dyad)\s+(:\s*0|define)\b</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -243,7 +249,7 @@
             <key>name</key>
             <string>definition.explicit.block.j</string>
             <key>begin</key>
-            <string>\b([1-2]|adverb|conjunction)\s+(:\s*0|define)\b</string>
+            <string>\b([12]|adverb|conjunction)\s+(:\s*0|define)\b</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -297,6 +303,32 @@
                 <string>#comment</string>
               </dict>
             </array>
+          </dict>
+        </array>
+      </dict>
+      <key>explicit_string_defn</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <key>name</key>
+            <string>definition.explicit.string.j</string>
+            <key>match</key>
+            <string>\b(([1-4]|adverb|conjunction|verb|monad|dyad)\s+(:|def))\s*((')[^']*(?:''[^']*)*('))</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.explicit.begin.j</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>string.quoted.single.j</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>
@@ -507,36 +539,6 @@
             <string>keyword.operator.conjunction.j</string>
             <key>match</key>
             <string>\s(([.:][.:])|([.:]))(?![.:])</string>
-          </dict>
-        </array>
-      </dict>
-      <key>string</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>name</key>
-            <string>string.quoted.single.j</string>
-            <key>begin</key>
-            <string>'</string>
-            <key>beginCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.string.begin.j</string>
-              </dict>
-            </dict>
-            <key>end</key>
-            <string>'</string>
-            <key>endCaptures</key>
-            <dict>
-              <key>0</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.string.end.j</string>
-              </dict>
-            </dict>
           </dict>
         </array>
       </dict>

@@ -22,6 +22,13 @@ NB.  ^ comment.block
 )
 NB. <- punctuation.definition.comment.block.end
 
+my_explicitstring_def=: verb def '2 * y'
+my_explicitstring_def=: dyad def 'x * y'  NB. check
+my_explicitstring_def=: 2 def '(u x) % v y'
+my_explicitstring_def=: adverb : 'u/ y'
+my_explicitstring_def=: 4 : 'x * y'
+my_explicitstring_def=: conjunction : '(u x) % v y'
+
 my_multiline_verb=: 3 : 0
 NB.                 ^ punctuation.definition.explicit.block.begin
     count=. #y
