@@ -72,18 +72,43 @@
           <dict>
             <key>name</key>
             <string>comment.line.j</string>
-            <key>begin</key>
-            <string>NB\.</string>
-            <key>beginCaptures</key>
+            <key>match</key>
+            <string>\b(NB\.).*$</string>
+            <key>captures</key>
             <dict>
-              <key>0</key>
+              <key>1</key>
               <dict>
                 <key>name</key>
                 <string>punctuation.definition.comment.begin.j</string>
               </dict>
             </dict>
-            <key>end</key>
-            <string>\n</string>
+          </dict>
+        </array>
+      </dict>
+      <key>string</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>single line string</string>
+            <key>name</key>
+            <string>string.quoted.single.j</string>
+            <key>match</key>
+            <string>(')[^']*(?:''[^']*)*(')</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.begin.j</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.end.j</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>

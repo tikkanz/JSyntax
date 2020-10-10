@@ -6,7 +6,7 @@ NB.  ^ source.j comment.line.j
      'mystring Note''s dksl'
 NB.  ^ punctuation.definition.string.begin
 NB.     ^ string.quoted.j
-NB.                ^ punctuation.definition.string.end
+NB.                        ^ punctuation.definition.string.end
 'Hello, World! NB. not a comment'
 NB. ^ string.quoted.j
 NB.                  ^ string.quoted.j
