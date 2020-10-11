@@ -3,7 +3,7 @@ NB. SYNTAX TEST "Packages/J/J.sublime-syntax"
 NB. foo
 NB.  ^ source.j comment.line.j
 
-     'mystring Note''s dksl'
+     'mystring Note''s dksl' 'ssdfs
 NB.  ^ punctuation.definition.string.begin
 NB.     ^ string.quoted.j
 NB.                        ^ punctuation.definition.string.end
