@@ -312,6 +312,7 @@
         <array>
           <dict>
             <key>comment</key>
+            <string>explicit string definition of verb or modifier</string>
             <key>name</key>
             <string>definition.explicit.string.j</string>
             <key>match</key>
