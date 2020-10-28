@@ -132,3 +132,14 @@ NB.     ^ punctuation.definition.string.end
     3:0
 NB.  ^ keyword.operator.verb.j - keyword.operator.conjunction.j
 NB.   ^ constant.numeric
+{{)n dskjdfks jskdjldsfjks
+sldjkflksdfjlk
+lsjdflksjkl
+lsjdflsjljskfjl}}
+
+{{ x + y }}
+{{)v (u y) * (v x) }}
+my_dd=: {{ NB. this is a multi-line direct defn
+  p=. {{ x + y }}  NB. nested direct defn
+  u p
+}}

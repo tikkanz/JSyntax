@@ -24,6 +24,14 @@
     <array>
       <dict>
         <key>include</key>
+        <string>#direct_noun_defn</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#direct_defn</string>
+      </dict>
+      <dict>
+        <key>include</key>
         <string>#operator</string>
       </dict>
       <dict>
@@ -176,6 +184,113 @@
           </dict>
         </array>
       </dict>
+      <key>direct_defn</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>direct definition of verbs/modifiers</string>
+            <key>name</key>
+            <string>definition.explicit.block.j</string>
+            <key>begin</key>
+            <string>(\{\{)(\)[mdvac])?(?![.:])</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.explicit.begin.j</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(\}\})(?![.:])</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.explicit.end.j</string>
+              </dict>
+            </dict>
+            <key>patterns</key>
+            <array>
+              <dict>
+                <key>include</key>
+                <string>#direct_noun_defn</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#direct_defn</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#explicit_arg</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#explicit_operand</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#operator</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#copula</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#string</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#keyword</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#number</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#comment</string>
+              </dict>
+            </array>
+          </dict>
+        </array>
+      </dict>
+      <key>direct_noun_defn</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>direct definition of nouns</string>
+            <key>name</key>
+            <string>string.noun.j</string>
+            <key>begin</key>
+            <string>(\{\{)(\)n)(?![.:])</string>
+            <key>beginCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.block.begin.j</string>
+              </dict>
+            </dict>
+            <key>end</key>
+            <string>(\}\})(?![.:])</string>
+            <key>endCaptures</key>
+            <dict>
+              <key>0</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.explicit.end.j</string>
+              </dict>
+            </dict>
+          </dict>
+        </array>
+      </dict>
       <key>explicit_defn</key>
       <dict>
         <key>patterns</key>
@@ -207,6 +322,14 @@
             </dict>
             <key>patterns</key>
             <array>
+              <dict>
+                <key>include</key>
+                <string>#direct_noun_defn</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#direct_defn</string>
+              </dict>
               <dict>
                 <key>include</key>
                 <string>#explicit_arg</string>
@@ -270,6 +393,14 @@
             </dict>
             <key>patterns</key>
             <array>
+              <dict>
+                <key>include</key>
+                <string>#direct_noun_defn</string>
+              </dict>
+              <dict>
+                <key>include</key>
+                <string>#direct_defn</string>
+              </dict>
               <dict>
                 <key>include</key>
                 <string>#explicit_arg</string>
