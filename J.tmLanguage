@@ -539,7 +539,7 @@
             <key>name</key>
             <string>keyword.operator.conjunction.j</string>
             <key>match</key>
-            <string>\s(([.:][.:])|([.:]))(?![.:])</string>
+            <string>(?&lt;=\s)([.:][.:]|[.:])(?![.:])</string>
           </dict>
         </array>
       </dict>
