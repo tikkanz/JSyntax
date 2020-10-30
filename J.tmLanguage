@@ -194,7 +194,7 @@
             <key>name</key>
             <string>definition.explicit.block.j</string>
             <key>begin</key>
-            <string>(\{\{)(\)[mdvac])?(?![.:])</string>
+            <string>((\{\{)(\)[mdvac])(.*$)|(\{\{)(?![.:\)]))</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -269,7 +269,7 @@
             <key>name</key>
             <string>string.noun.j</string>
             <key>begin</key>
-            <string>(\{\{)(\)n)(?![.:])</string>
+            <string>(\{\{)(\)n)</string>
             <key>beginCaptures</key>
             <dict>
               <key>0</key>
@@ -279,7 +279,7 @@
               </dict>
             </dict>
             <key>end</key>
-            <string>(\}\})(?![.:])</string>
+            <string>(^\}\})(?![.:])</string>
             <key>endCaptures</key>
             <dict>
               <key>0</key>
