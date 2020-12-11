@@ -86,7 +86,7 @@ NB.       ^^ keyword.operator.conjunction.j
 NB.          ^^ keyword.operator.conjunction.j
 NB.              ^ invalid.deprecated.trailing-whitespace
 
-    _9: _8: 7: *0: _0: p.. {:: A. c.C.e.E.i.I.j.L.o.p.r.i:p:q:s:u:x:
+    _9: _8: 7: *0: _0: p.. {:: A. c.C.e.E.i.I.j.L.o.p.r.u.v.i:p:q:s:u:x:
 NB. ^^^ keyword.operator.verb.j
 NB.     ^^^ keyword.operator.verb.j
 NB.         ^^ keyword.operator.verb.j
