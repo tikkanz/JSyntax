@@ -104,25 +104,26 @@ NB.   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ keyword.operator.verb.j
 NB.   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ keyword.operator.verb.j
       <>=+*-%^$|,;#!][{?
 NB.   ^^^^^^^^^^^^^^^^^^ keyword.operator.verb.j
-     /. \. b.f.M.t. b: t:/\}~
+     /. \. b.f.M. b:t.t:/\}~
 NB.  ^^ keyword.operator.adverb.j
 NB.     ^^ keyword.operator.adverb.j
-NB.        ^^^^^^^^ keyword.operator.adverb.j
-NB.                 ^^ source.j - keyword.operator.adverb.j
-NB.                    ^^^^^^ keyword.operator.adverb.j
+NB.        ^^^^^^ keyword.operator.adverb.j
+NB.               ^^^^^^ source.j - keyword.operator.adverb.j
+NB.                     ^^^^ keyword.operator.adverb.j
 
-    ^: &.: d.D.H.T.D:L:S:
+    ^: &.: H.L:S: T.d.D.D:
 NB. ^^ keyword.operator.conjunction.j
 NB.    ^^^ keyword.operator.conjunction.j
-NB.        ^^^^^^^^^^^^^^ keyword.operator.conjunction.j
+NB.        ^^^^^^ keyword.operator.conjunction.j
+NB.               ^^^^^^^^ source.j - keyword.operator.conjunction.j
     ;. !.@.&.
 NB. ^^ keyword.operator.conjunction.j
 NB.    ^^^^^^ keyword.operator.conjunction.j
     &:@:^:!:`:&"
 NB. ^^^^^^^^^^^^ keyword.operator.conjunction.j
-     : . :. .. .: ::
-NB. ^^^^^^^^^^^^^^^^ keyword.operator.conjunction.j
-
+     : . :. :: .. .:
+NB. ^^^^^^^^^^ keyword.operator.conjunction.j
+NB.            ^^^^^ source.j - keyword.operator.conjunction.j
      &':'
 NB.  ^ keyword.operator.conjunction.j
 NB.   ^ punctuation.definition.string.begin
