@@ -32,22 +32,6 @@
       </dict>
       <dict>
         <key>include</key>
-        <string>#operator</string>
-      </dict>
-      <dict>
-        <key>include</key>
-        <string>#copula</string>
-      </dict>
-      <dict>
-        <key>include</key>
-        <string>#string</string>
-      </dict>
-      <dict>
-        <key>include</key>
-        <string>#bracket</string>
-      </dict>
-      <dict>
-        <key>include</key>
         <string>#explicit_defn</string>
       </dict>
       <dict>
@@ -65,6 +49,18 @@
       <dict>
         <key>include</key>
         <string>#number</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#operator</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#copula</string>
+      </dict>
+      <dict>
+        <key>include</key>
+        <string>#string</string>
       </dict>
       <dict>
         <key>include</key>
@@ -121,18 +117,6 @@
                 <string>punctuation.definition.string.end.j</string>
               </dict>
             </dict>
-          </dict>
-        </array>
-      </dict>
-      <key>bracket</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>name</key>
-            <string>meta.bracket.j</string>
-            <key>match</key>
-            <string>(?:\(|\)|,)(?!('|(?:\.'))*\.?')</string>
           </dict>
         </array>
       </dict>
@@ -233,6 +217,10 @@
               </dict>
               <dict>
                 <key>include</key>
+                <string>#number</string>
+              </dict>
+              <dict>
+                <key>include</key>
                 <string>#operator</string>
               </dict>
               <dict>
@@ -246,10 +234,6 @@
               <dict>
                 <key>include</key>
                 <string>#keyword</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#number</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -336,6 +320,10 @@
               </dict>
               <dict>
                 <key>include</key>
+                <string>#number</string>
+              </dict>
+              <dict>
+                <key>include</key>
                 <string>#operator</string>
               </dict>
               <dict>
@@ -349,10 +337,6 @@
               <dict>
                 <key>include</key>
                 <string>#keyword</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#number</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -411,6 +395,10 @@
               </dict>
               <dict>
                 <key>include</key>
+                <string>#number</string>
+              </dict>
+              <dict>
+                <key>include</key>
                 <string>#operator</string>
               </dict>
               <dict>
@@ -424,10 +412,6 @@
               <dict>
                 <key>include</key>
                 <string>#keyword</string>
-              </dict>
-              <dict>
-                <key>include</key>
-                <string>#number</string>
               </dict>
               <dict>
                 <key>include</key>
@@ -575,10 +559,28 @@
         <key>patterns</key>
         <array>
           <dict>
+            <key>comment</key>
+            <string>classic numbers</string>
             <key>name</key>
             <string>constant.numeric.j</string>
             <key>match</key>
-            <string>\b[_0-9][_0-9\.a-zA-Z]*\b(?![.:])</string>
+            <string>\b(?&lt;!\.)(_\.\d+|_?\d+\.?\d*)(?![.:\w])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>special numbers (angles, exponent, complex, rational, extended)</string>
+            <key>name</key>
+            <string>constant.numeric.j</string>
+            <key>match</key>
+            <string>\b(_?\d+\.?\d*)(ar|ad|[ejprx])(_?\d*\.?\w*)(?![.:\w])</string>
+          </dict>
+          <dict>
+            <key>comment</key>
+            <string>numbers base</string>
+            <key>name</key>
+            <string>constant.numeric.j</string>
+            <key>match</key>
+            <string>\b(_?\d+\.?\d*)(b)(_?\w*\.?\w*)(?![.:\w])</string>
           </dict>
         </array>
       </dict>
@@ -598,7 +600,7 @@
             <key>name</key>
             <string>keyword.operator.verb.j</string>
             <key>match</key>
-            <string>((_?[1-9]:)|(\b0:)|({::))(?![.:])</string>
+            <string>((\b_?[1-9]:)|(\b0:)|({::))(?![.:])</string>
           </dict>
           <dict>
             <key>comment</key>
@@ -606,7 +608,7 @@
             <key>name</key>
             <string>keyword.operator.verb.j</string>
             <key>match</key>
-            <string>\b((p\.\.)|([AcCeEiIjLopr]\.)|([ipqsux]:))(?![.:])</string>
+            <string>\b((p\.\.)|([AcCeEiIjLopruv]\.)|([ipqsux]:))(?![.:])</string>
           </dict>
           <dict>
             <key>comment</key>
@@ -622,7 +624,7 @@
             <key>name</key>
             <string>keyword.operator.verb.j</string>
             <key>match</key>
-            <string>([&lt;&gt;\+\*\-%$|,#{};~"_/\\\[]:)(?![.:])</string>
+            <string>([&lt;&gt;\+\*\-%$|,#{};~"_\/\\\[]:)(?![.:])</string>
           </dict>
           <dict>
             <key>comment</key>
@@ -638,7 +640,7 @@
             <key>name</key>
             <string>keyword.operator.adverb.j</string>
             <key>match</key>
-            <string>\b(([bfMt]\.)|(t:))(?![.:])</string>
+            <string>\b(([bfM]\.))(?![.:])</string>
           </dict>
           <dict>
             <key>comment</key>
@@ -646,7 +648,7 @@
             <key>name</key>
             <string>keyword.operator.adverb.j</string>
             <key>match</key>
-            <string>(([/\\]\.)|([~/\\}]))(?![.:])</string>
+            <string>(([\/\\]\.)|([~\/\\}]))(?![.:])</string>
           </dict>
           <dict>
             <key>comment</key>
@@ -654,7 +656,7 @@
             <key>name</key>
             <string>keyword.operator.conjunction.j</string>
             <key>match</key>
-            <string>\b(([dDHT]\.)|([DLS]:))(?![.:])</string>
+            <string>\b((H\.)|([LS]:))(?![.:])</string>
           </dict>
           <dict>
             <key>comment</key>
@@ -670,7 +672,7 @@
             <key>name</key>
             <string>keyword.operator.conjunction.j</string>
             <key>match</key>
-            <string>(?&lt;=\s)([.:][.:]|[.:])(?![.:])</string>
+            <string>(?&lt;=\s)([:][.:]|[.:])(?![.:])</string>
           </dict>
         </array>
       </dict>
