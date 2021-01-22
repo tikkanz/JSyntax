@@ -93,33 +93,6 @@
           </dict>
         </array>
       </dict>
-      <key>string</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>comment</key>
-            <string>single line string</string>
-            <key>name</key>
-            <string>string.quoted.single.j</string>
-            <key>match</key>
-            <string>(')[^']*(?:''[^']*)*(')</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.string.begin.j</string>
-              </dict>
-              <key>2</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.string.end.j</string>
-              </dict>
-            </dict>
-          </dict>
-        </array>
-      </dict>
       <key>copula</key>
       <dict>
         <key>patterns</key>
@@ -137,34 +110,6 @@
             <string>copula.local.j</string>
             <key>match</key>
             <string>=\.</string>
-          </dict>
-        </array>
-      </dict>
-      <key>explicit_arg</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>comment</key>
-            <string>argument identifiers within explicit definition blocks</string>
-            <key>name</key>
-            <string>variable.parameter.j</string>
-            <key>match</key>
-            <string>\b[xy](?![\w.:])</string>
-          </dict>
-        </array>
-      </dict>
-      <key>explicit_operand</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>comment</key>
-            <string>operand identifiers within modifier explicit definition blocks</string>
-            <key>name</key>
-            <string>variable.parameter.j</string>
-            <key>match</key>
-            <string>\b[nmuv](?![\w.:])</string>
           </dict>
         </array>
       </dict>
@@ -275,6 +220,20 @@
           </dict>
         </array>
       </dict>
+      <key>explicit_arg</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>argument identifiers within explicit definition blocks</string>
+            <key>name</key>
+            <string>variable.parameter.j</string>
+            <key>match</key>
+            <string>\b[xy](?![\w.:])</string>
+          </dict>
+        </array>
+      </dict>
       <key>explicit_defn</key>
       <dict>
         <key>patterns</key>
@@ -343,6 +302,83 @@
                 <string>#comment</string>
               </dict>
             </array>
+          </dict>
+        </array>
+      </dict>
+      <key>explicit_operand</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>operand identifiers within modifier explicit definition blocks</string>
+            <key>name</key>
+            <string>variable.parameter.j</string>
+            <key>match</key>
+            <string>\b[nmuv](?![\w.:])</string>
+          </dict>
+        </array>
+      </dict>
+      <key>explicit_string_defn</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>explicit string definition of verb or modifier</string>
+            <key>name</key>
+            <string>definition.explicit.string.j</string>
+            <key>match</key>
+            <string>\b(([1-4]|adverb|conjunction|verb|monad|dyad)\s+(:|def))\s*((')[^']*(?:''[^']*)*('))</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.explicit.begin.j</string>
+              </dict>
+              <key>4</key>
+              <dict>
+                <key>name</key>
+                <string>string.quoted.single.j</string>
+              </dict>
+            </dict>
+          </dict>
+        </array>
+      </dict>
+      <key>keyword</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.j</string>
+            <key>match</key>
+            <string>\b(if|do|else|elseif|for|select|case|fcase)\.(?![.:])</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.j</string>
+            <key>match</key>
+            <string>\b(assert|break|continue|return|while|whilst)\.(?![.:])</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.j</string>
+            <key>match</key>
+            <string>\b(throw|try|catch|catchd|catcht)\.(?![.:])</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.j</string>
+            <key>match</key>
+            <string>\b(for_[A-Za-z][A-Za-z_0-9]*|goto_[A-Za-z][A-Za-z_0-9]*|label_[A-Za-z][A-Za-z_0-9]*)\.(?![.:])</string>
+          </dict>
+          <dict>
+            <key>name</key>
+            <string>keyword.control.end.j</string>
+            <key>match</key>
+            <string>\bend\.(?![.:])</string>
           </dict>
         </array>
       </dict>
@@ -418,69 +454,6 @@
                 <string>#comment</string>
               </dict>
             </array>
-          </dict>
-        </array>
-      </dict>
-      <key>explicit_string_defn</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>comment</key>
-            <string>explicit string definition of verb or modifier</string>
-            <key>name</key>
-            <string>definition.explicit.string.j</string>
-            <key>match</key>
-            <string>\b(([1-4]|adverb|conjunction|verb|monad|dyad)\s+(:|def))\s*((')[^']*(?:''[^']*)*('))</string>
-            <key>captures</key>
-            <dict>
-              <key>1</key>
-              <dict>
-                <key>name</key>
-                <string>punctuation.definition.explicit.begin.j</string>
-              </dict>
-              <key>4</key>
-              <dict>
-                <key>name</key>
-                <string>string.quoted.single.j</string>
-              </dict>
-            </dict>
-          </dict>
-        </array>
-      </dict>
-      <key>keyword</key>
-      <dict>
-        <key>patterns</key>
-        <array>
-          <dict>
-            <key>name</key>
-            <string>keyword.control.j</string>
-            <key>match</key>
-            <string>\b(if|do|else|elseif|for|select|case|fcase)\.(?![.:])</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>keyword.control.j</string>
-            <key>match</key>
-            <string>\b(assert|break|continue|return|while|whilst)\.(?![.:])</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>keyword.control.j</string>
-            <key>match</key>
-            <string>\b(throw|try|catch|catchd|catcht)\.(?![.:])</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>keyword.control.j</string>
-            <key>match</key>
-            <string>\b(for_[A-Za-z][A-Za-z_0-9]*|goto_[A-Za-z][A-Za-z_0-9]*|label_[A-Za-z][A-Za-z_0-9]*)\.(?![.:])</string>
-          </dict>
-          <dict>
-            <key>name</key>
-            <string>keyword.control.end.j</string>
-            <key>match</key>
-            <string>\bend\.(?![.:])</string>
           </dict>
         </array>
       </dict>
@@ -564,7 +537,7 @@
             <key>name</key>
             <string>constant.numeric.j</string>
             <key>match</key>
-            <string>\b(?&lt;!\.)(_\.\d+|_?\d+\.?\d*)(?![.:\w])</string>
+            <string>\b(?&lt;! \.)(_\.\d+|_?\d+\.?\d*)(?![.:\w])</string>
           </dict>
           <dict>
             <key>comment</key>
@@ -673,6 +646,33 @@
             <string>keyword.operator.conjunction.j</string>
             <key>match</key>
             <string>(?&lt;=\s)([:][.:]|[.:])(?![.:])</string>
+          </dict>
+        </array>
+      </dict>
+      <key>string</key>
+      <dict>
+        <key>patterns</key>
+        <array>
+          <dict>
+            <key>comment</key>
+            <string>single line string</string>
+            <key>name</key>
+            <string>string.quoted.single.j</string>
+            <key>match</key>
+            <string>(')[^']*(?:''[^']*)*(')</string>
+            <key>captures</key>
+            <dict>
+              <key>1</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.begin.j</string>
+              </dict>
+              <key>2</key>
+              <dict>
+                <key>name</key>
+                <string>punctuation.definition.string.end.j</string>
+              </dict>
+            </dict>
           </dict>
         </array>
       </dict>

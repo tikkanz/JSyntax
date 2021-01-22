@@ -136,7 +136,8 @@ NB.   ^ constant.numeric
 
 1b1 1.0 _1.4 1. _.34 1ar1 1ad3 2p2 2x1 5r4 0j_2 _4.45e_3 3b6dzf34   NB. valid numbers
 1.b49.azbds0 3293.90ba9393 300.b_.399                          NB. valid numbers
-4+3 8.48939>0493 5.*3. 4.0443*2.94  0j_2*392.r9.b9             NB. valid number expressions
+4+3 8.48939>0493 5.*3. 4.0443*2.94  0j_2*392.r9.b9  i.4 5      NB. valid number expressions
+localnoun=.4 3 2 8                                             NB. valid number expressions
 1a1 1cds1 _1t5 33: 5.a .49                            NB. ill-formed numbers/spelling errors
 
 'prefix', {{)nLine 1
